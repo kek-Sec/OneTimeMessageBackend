@@ -1,0 +1,28 @@
+{
+  "name": "onetimemessage-rest",
+  "version": "1.0.0",
+  "description": "x",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "kek-sec",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookieparser": "^0.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.0",
+    "mongoose-unique-validator": "^2.0.3",
+    "nodemon": "^2.0.4"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.1.0",
+    "@typescript-eslint/parser": "^4.1.0",
+    "eslint": "^7.9.0",
+    "eslint-config-google": "^0.14.0"
+  }
+}
