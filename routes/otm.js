@@ -27,8 +27,8 @@ router.get('/', jsonParser, async (req, res) => {
 });
 
 router.get('/:ItemId',jsonParser, async (req, res) => {
-    
-        req.params.ItemId = atob(req.params.ItemId);
+
+        //req.params.ItemId = atob(req.params.ItemId);
         try {
         const item = await Item.findById(btoa(req.params.ItemId));
         res.json(item);
