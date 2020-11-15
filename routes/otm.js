@@ -1,4 +1,5 @@
 const express = require('express');
+var moment = require('moment'); // require
 
 const router = express.Router();
 
@@ -39,14 +40,14 @@ router.post('/add',jsonParser, (req, res) => {
     const message = new OneTimeMessage({
         message_title: req.body.message_title,
         message_body: req.body.message_body,
-        createdAt: new Date()
+        expireAt: moment().add(10, 'seconds')
     });
       message
         .save()
         .then(result => {
           console.log(result);
           res.status(201).json({
-            message: "Handling POST requests to /products",
+            message: "Handling POST requests to /otm/add",
             createdProduct: result
           });
         })

@@ -9,11 +9,14 @@ const MessageSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    message_expires : {
-        type: Date,
-        default: Date.now,
-        expires: 1600
-    }
+    message_burn_on_read:{
+        type: Boolean,
+        required: false,
+        default: false
+    },
+    createdAt: { type: Date, default: Date.now },
+    expireAt: { type: Date, default: undefined } 
 });
 
+MessageSchema.index({ "expireAt": 1 }, { expireAfterSeconds: 0 });
 module.exports = mongoose.model('Message_Item', MessageSchema);
