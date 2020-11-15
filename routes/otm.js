@@ -1,5 +1,7 @@
 const express = require('express');
 var moment = require('moment'); // require
+var btoa = require('btoa');
+var atob = require('atob');
 
 const router = express.Router();
 
@@ -15,7 +17,7 @@ var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
  
 //Routes
-router.get('/', jsonParser, async (req, res) => {
+router.get('/', jsonParser, async (req, res) => {    
     try {
         const items = await Item.find();
         res.json(items);
@@ -25,6 +27,7 @@ router.get('/', jsonParser, async (req, res) => {
 });
 
 router.get('/:ItemId',jsonParser, async (req, res) => {
+        //        const item = await Item.findById(atob(req.params.ItemId));
 
     try {
         const item = await Item.findById(req.params.ItemId);

@@ -9,7 +9,9 @@
   "author": "kek-sec",
   "license": "ISC",
   "dependencies": {
+    "atob": "^2.1.2",
     "body-parser": "^1.19.0",
+    "btoa": "^1.2.1",
     "cookieparser": "^0.1.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
