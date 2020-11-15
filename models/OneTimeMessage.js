@@ -1,18 +1,19 @@
 const mongoose = require('mongoose');
 
-const Project_ItemSchema = mongoose.Schema({
-    project_title: {
+const OneTimeMessageSchema = mongoose.Schema({
+    message_title: {
         type: String,
         required: true
     },
-    project_url: {
+    message_body: {
         type: String,
         required: true
     },
-    project_image_url : {
-        type: String,
-        required: true
+    message_expires : {
+        type: Date,
+        default: Date.now,
+        expires: 7200
     }
 });
 
-module.exports = mongoose.model('Project_items', Project_ItemSchema);
+module.exports = mongoose.model('OneTimeMessage', OneTimeMessageSchema);
