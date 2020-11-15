@@ -4,7 +4,8 @@ const router = express.Router();
 
 const Item = require('../models/OneTimeMessage');
 
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+const OneTimeMessage = require('../models/OneTimeMessage');
 
 // create application/json parser
 var jsonParser = bodyParser.json()
@@ -31,6 +32,31 @@ router.get('/:ItemId',jsonParser, async (req, res) => {
     catch (err) {
         res.json({ message: err });
     }
+});
+
+router.post('/add',jsonParser, (req, res) => {
+
+    const message = new OneTimeMessage({
+        message_title: req.body.message_title,
+        message_body: req.body.message_body,
+        createdAt: new Date()
+    });
+      message
+        .save()
+        .then(result => {
+          console.log(result);
+          res.status(201).json({
+            message: "Handling POST requests to /products",
+            createdProduct: result
+          });
+        })
+        .catch(err => {
+          console.log(err);
+          res.status(500).json({
+            error: err
+          });
+        });
+
 });
 
 module.exports = router;
