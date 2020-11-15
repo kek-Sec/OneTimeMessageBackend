@@ -37,10 +37,12 @@ router.get('/:ItemId',jsonParser, async (req, res) => {
 
 router.post('/add',jsonParser, (req, res) => {
 
+    var expiry = setExpiry(req);
     const message = new OneTimeMessage({
         message_title: req.body.message_title,
         message_body: req.body.message_body,
-        expireAt: moment().add(10, 'seconds')
+        message_burn_on_read: req.body.message_burn_on_read,
+        expireAt: expiry
     });
       message
         .save()
@@ -59,5 +61,35 @@ router.post('/add',jsonParser, (req, res) => {
         });
 
 });
+
+function setExpiry(req)
+{
+    try{
+        if(req.body.message_expires === "1 Week")
+        {
+            return moment().add(604800, 'seconds');
+        }
+        else if(req.body.message_expires === "1 Month")
+        {
+            return moment().add(30, 'days'); 
+        }
+        else if(req.body.message_expires === "1 Day")
+        {
+            return moment().add(24,'hours');
+        }
+        else if(req.body.message_expires === "Never")
+        {
+            return moment.add(24,"months");
+        }
+        else
+        {
+            return moment().add(12,"months");
+        }
+    }
+    catch(exception)
+    {
+        console.log(exception);
+    }
+}
 
 module.exports = router;
