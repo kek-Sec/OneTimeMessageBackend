@@ -30,11 +30,11 @@ router.get('/:ItemId',jsonParser, async (req, res) => {
 
         //req.params.ItemId = atob(req.params.ItemId);
         try {
-        const item = await Item.findById(btoa(req.params.ItemId));
+        const item = await Item.findById(atob(req.params.ItemId));
         res.json(item);
         if (item.message_burn_on_read)
         {
-            item.remove({_id: btoa(req.params.ItemId)});
+            item.remove({_id: atob(req.params.ItemId)});
         }
     }
     catch (err) {

@@ -27,5 +27,13 @@
     "@typescript-eslint/parser": "^4.1.0",
     "eslint": "^7.9.0",
     "eslint-config-google": "^0.14.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kek-Sec/OneTimeMessageBackend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kek-Sec/OneTimeMessageBackend/issues"
+  },
+  "homepage": "https://github.com/kek-Sec/OneTimeMessageBackend#readme"
 }
